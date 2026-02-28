@@ -1,0 +1,20 @@
+# OS junk
+.DS_Store
+
+# Caches
+.cache/
+.local/share/nvim/
+.local/share/Trash/
+
+# Node
+node_modules/
+
+# Secrets
+*.key
+*.pem
+*.env
+
+# Logs
+*.log
+
+*.bak.*
