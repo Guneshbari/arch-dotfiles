@@ -6,3 +6,4 @@ vim.opt.relativenumber = false
 
 vim.opt.title = true
 vim.opt.titlestring = "%{fnamemodify(getcwd(), ':t')} - nvim"
+vim.g.autoformat = true

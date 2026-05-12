@@ -103,3 +103,39 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 eval "$(starship init zsh)"
+export PATH="$PATH:/home/trespasser/worldbanc/private/bin"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/trespasser/coding_stuff/learn-cicd-typescript-starter/google-cloud-sdk/path.zsh.inc' ]; then . '/home/trespasser/coding_stuff/learn-cicd-typescript-starter/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/trespasser/coding_stuff/learn-cicd-typescript-starter/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/trespasser/coding_stuff/learn-cicd-typescript-starter/google-cloud-sdk/completion.zsh.inc'; fi
+
+autoload -U add-zsh-hook
+
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  fi
+}
+
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+newnode() {
+  cp -r ~/Templates/node-ts $1
+  cd $1
+  nvm use
+  pnpm install
+  git init
+}
+
+# Turso
+export PATH="$PATH:/home/trespasser/.turso"
