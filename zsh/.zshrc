@@ -139,3 +139,7 @@ newnode() {
 
 # Turso
 export PATH="$PATH:/home/trespasser/.turso"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/trespasser/.local/bin:$PATH"
