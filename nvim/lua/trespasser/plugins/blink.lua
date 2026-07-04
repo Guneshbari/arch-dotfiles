@@ -1,34 +1,46 @@
 return {
-    "saghen/blink.cmp",
+	"saghen/blink.cmp",
 
-    dependencies = {
-        "rafamadriz/friendly-snippets",
-    },
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+	},
 
-    version = "*",
+	version = "*",
 
-    opts = {
-        keymap = {
-            preset = "default",
-        },
+	opts = {
+		keymap = {
+			preset = "default",
 
-        appearance = {
-            nerd_font_variant = "mono",
-        },
+			["<CR>"] = {
+				"select_and_accept",
+				"fallback",
+			},
+		},
 
-        completion = {
-            documentation = {
-                auto_show = true,
-            },
-        },
+		appearance = {
+			nerd_font_variant = "mono",
+		},
 
-        sources = {
-            default = {
-                "lsp",
-                "path",
-                "snippets",
-                "buffer",
-            },
-        },
-    },
+		completion = {
+			documentation = {
+				auto_show = true,
+			},
+
+			list = {
+				selection = {
+					preselect = true,
+					auto_insert = false,
+				},
+			},
+		},
+
+		sources = {
+			default = {
+				"lsp",
+				"path",
+				"snippets",
+				"buffer",
+			},
+		},
+	},
 }
