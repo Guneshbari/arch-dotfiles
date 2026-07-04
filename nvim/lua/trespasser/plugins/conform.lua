@@ -26,4 +26,14 @@ return {
             lsp_fallback = true,
         },
     },
+    config = function(_, opts)
+        require("conform").setup(opts)
+        vim.keymap.set("n", "<leader>f", function()
+            require("conform").format({
+                lsp_fallback = true,
+                async = false,
+                timeout_ms = 500,
+            })
+        end, { desc = "Format File" })
+    end,
 }
