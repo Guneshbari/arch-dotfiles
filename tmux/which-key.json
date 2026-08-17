@@ -1,0 +1,392 @@
+{
+  "items": [
+    {
+      "key": "s",
+      "type": "group",
+      "description": "Sessions",
+      "items": [
+        {
+          "key": "s",
+          "type": "tmux",
+          "command": "choose-tree -s",
+          "description": "Choose / manage session"
+        },
+        {
+          "key": "(",
+          "type": "tmux",
+          "command": "switch-client -p",
+          "description": "Previous session"
+        },
+        {
+          "key": ")",
+          "type": "tmux",
+          "command": "switch-client -n",
+          "description": "Next session"
+        },
+        {
+          "key": "l",
+          "type": "tmux",
+          "command": "switch-client -l",
+          "description": "Last session"
+        },
+        {
+          "key": "r",
+          "type": "tmux",
+          "command": "command-prompt -I '#S' 'rename-session \"%%\"'",
+          "description": "Rename session"
+        },
+        {
+          "key": "d",
+          "type": "tmux",
+          "command": "detach-client",
+          "description": "Detach"
+        }
+      ]
+    },
+    {
+      "key": "w",
+      "type": "group",
+      "description": "Windows",
+      "items": [
+        {
+          "key": "c",
+          "type": "tmux",
+          "command": "new-window -c '#{pane_current_path}'",
+          "description": "New window"
+        },
+        {
+          "key": "w",
+          "type": "tmux",
+          "command": "choose-window",
+          "description": "Choose window"
+        },
+        {
+          "key": "f",
+          "type": "tmux",
+          "command": "command-prompt -p 'Find window:' 'find-window \"%%\"'",
+          "description": "Find window"
+        },
+        {
+          "key": "n",
+          "type": "tmux",
+          "command": "next-window",
+          "description": "Next window"
+        },
+        {
+          "key": "p",
+          "type": "tmux",
+          "command": "previous-window",
+          "description": "Previous window"
+        },
+        {
+          "key": "l",
+          "type": "tmux",
+          "command": "last-window",
+          "description": "Last window"
+        },
+        {
+          "key": "r",
+          "type": "tmux",
+          "command": "command-prompt -I '#W' 'rename-window \"%%\"'",
+          "description": "Rename window"
+        },
+        {
+          "key": "m",
+          "type": "tmux",
+          "command": "move-window",
+          "description": "Move window"
+        },
+        {
+          "key": "S",
+          "type": "tmux",
+          "command": "swap-window",
+          "description": "Swap window"
+        },
+        {
+          "key": "x",
+          "type": "tmux",
+          "command": "confirm-before -p 'Kill window #W? (y/n)' kill-window",
+          "description": "Kill window"
+        },
+        {
+          "key": "b",
+          "type": "tmux",
+          "command": "break-pane",
+          "description": "Break pane to window"
+        }
+      ]
+    },
+    {
+      "key": "p",
+      "type": "group",
+      "description": "Panes",
+      "items": [
+        {
+          "key": "z",
+          "type": "tmux",
+          "command": "resize-pane -Z",
+          "description": "Toggle zoom"
+        },
+        {
+          "key": "o",
+          "type": "tmux",
+          "command": "select-pane -l",
+          "description": "Last pane"
+        },
+        {
+          "key": "q",
+          "type": "tmux",
+          "command": "display-panes",
+          "description": "Show pane numbers"
+        },
+        {
+          "key": "x",
+          "type": "tmux",
+          "command": "confirm-before -p 'Kill pane #P? (y/n)' kill-pane",
+          "description": "Kill pane"
+        },
+        {
+          "key": "!",
+          "type": "tmux",
+          "command": "break-pane",
+          "description": "Break pane to window"
+        },
+        {
+          "key": "r",
+          "type": "group",
+          "description": "Resize",
+          "items": [
+            {
+              "key": "h",
+              "type": "tmux",
+              "command": "resize-pane -L 5",
+              "description": "Resize left"
+            },
+            {
+              "key": "j",
+              "type": "tmux",
+              "command": "resize-pane -D 5",
+              "description": "Resize down"
+            },
+            {
+              "key": "k",
+              "type": "tmux",
+              "command": "resize-pane -U 5",
+              "description": "Resize up"
+            },
+            {
+              "key": "l",
+              "type": "tmux",
+              "command": "resize-pane -R 5",
+              "description": "Resize right"
+            }
+          ]
+        },
+        {
+          "key": "s",
+          "type": "group",
+          "description": "Swap",
+          "items": [
+            {
+              "key": "u",
+              "type": "tmux",
+              "command": "swap-pane -U",
+              "description": "Swap up"
+            },
+            {
+              "key": "d",
+              "type": "tmux",
+              "command": "swap-pane -D",
+              "description": "Swap down"
+            }
+          ]
+        },
+        {
+          "key": "j",
+          "type": "tmux",
+          "command": "join-pane",
+          "description": "Join pane"
+        },
+        {
+          "key": "m",
+          "type": "tmux",
+          "command": "select-pane -m",
+          "description": "Mark pane"
+        }
+      ]
+    },
+    {
+      "key": "l",
+      "type": "group",
+      "description": "Layouts",
+      "items": [
+        {
+          "key": "n",
+          "type": "tmux",
+          "command": "next-layout",
+          "description": "Next layout"
+        },
+        {
+          "key": "p",
+          "type": "tmux",
+          "command": "previous-layout",
+          "description": "Previous layout"
+        },
+        {
+          "key": "1",
+          "type": "tmux",
+          "command": "select-layout even-horizontal",
+          "description": "Even horizontal"
+        },
+        {
+          "key": "2",
+          "type": "tmux",
+          "command": "select-layout even-vertical",
+          "description": "Even vertical"
+        },
+        {
+          "key": "3",
+          "type": "tmux",
+          "command": "select-layout main-horizontal",
+          "description": "Main horizontal"
+        },
+        {
+          "key": "4",
+          "type": "tmux",
+          "command": "select-layout main-vertical",
+          "description": "Main vertical"
+        },
+        {
+          "key": "5",
+          "type": "tmux",
+          "command": "select-layout tiled",
+          "description": "Tiled"
+        }
+      ]
+    },
+    {
+      "key": "b",
+      "type": "group",
+      "description": "Buffers",
+      "items": [
+        {
+          "key": "c",
+          "type": "tmux",
+          "command": "choose-buffer",
+          "description": "Choose buffer"
+        },
+        {
+          "key": "p",
+          "type": "tmux",
+          "command": "paste-buffer",
+          "description": "Paste buffer"
+        },
+        {
+          "key": "d",
+          "type": "tmux",
+          "command": "delete-buffer",
+          "description": "Delete buffer"
+        },
+        {
+          "key": "l",
+          "type": "popup",
+          "command": "tmux list-buffers | less -R",
+          "description": "List buffers"
+        }
+      ]
+    },
+    {
+      "key": "C",
+      "type": "group",
+      "description": "Clients",
+      "items": [
+        {
+          "key": "c",
+          "type": "tmux",
+          "command": "choose-client",
+          "description": "Choose client"
+        },
+        {
+          "key": "l",
+          "type": "tmux",
+          "command": "switch-client -l",
+          "description": "Last client"
+        },
+        {
+          "key": "d",
+          "type": "tmux",
+          "command": "detach-client",
+          "description": "Detach client"
+        },
+        {
+          "key": "D",
+          "type": "tmux",
+          "command": "choose-client 'detach-client -t \"%%\"'",
+          "description": "Detach selected client"
+        }
+      ]
+    },
+    {
+      "key": "r",
+      "type": "group",
+      "description": "Resurrect",
+      "items": [
+        {
+          "key": "s",
+          "type": "tmux",
+          "command": "run-shell '~/.tmux/plugins/tmux-resurrect/scripts/save.sh'",
+          "description": "Save session"
+        },
+        {
+          "key": "r",
+          "type": "tmux",
+          "command": "run-shell '~/.tmux/plugins/tmux-resurrect/scripts/restore.sh'",
+          "description": "Restore session"
+        }
+      ]
+    },
+    {
+      "key": "u",
+      "type": "group",
+      "description": "Utilities",
+      "items": [
+        {
+          "key": ":",
+          "type": "tmux",
+          "command": "command-prompt",
+          "description": "Command prompt"
+        },
+        {
+          "key": "t",
+          "type": "tmux",
+          "command": "clock-mode",
+          "description": "Clock mode"
+        },
+        {
+          "key": "m",
+          "type": "popup",
+          "command": "tmux show-messages | less -R",
+          "description": "Show messages"
+        }
+      ]
+    },
+    {
+      "key": "N",
+      "type": "tmux",
+      "command": "command-prompt -p 'New session name:' 'new-session -A -s \"%%\"'",
+      "description": "New session"
+    },
+    {
+      "key": "R",
+      "type": "tmux",
+      "command": "source-file ~/.tmux.conf \\; display-message 'tmux config reloaded'",
+      "description": "Reload config"
+    },
+    {
+      "key": "?",
+      "type": "popup",
+      "command": "tmux list-keys -N | less -R",
+      "description": "All keybindings"
+    }
+  ]
+}
