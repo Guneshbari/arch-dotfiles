@@ -101,7 +101,9 @@ This repository is built with a modular, maintainable, and frictionless pairing 
 │           └── which-key.lua    # Interactive keymap cheatsheet popup
 ├── tmux/                        # Tmux workspace configuration
 │   ├── .tmux.conf               # Multi-prefix, top bar, vim keys, TPM plugins
-│   └── which-key.json           # Interactive popup keymap definition
+│   ├── which-key.json           # Interactive popup keymap definition
+│   └── bin/
+│       └── tmux-launcher        # Smart launcher: auto-attach or prompt for session name
 ├── starship/
 │   └── starship.toml            # Catppuccin Mocha powerline prompt configuration
 ├── zsh/
@@ -131,7 +133,7 @@ This repository is built with a modular, maintainable, and frictionless pairing 
 | Keybinding | Action | Description |
 | :--- | :--- | :--- |
 | `Super + Enter` | Terminal | Launch terminal in current working directory (`omarchy-cmd-terminal-cwd`) |
-| `Super + Alt + Enter` | Tmux | Launch new Tmux session in current working directory |
+| `Super + Alt + Enter` | Smart Tmux | Launch or attach Tmux session via `tmux-launcher` in current directory |
 | `Super + Shift + Enter` | Web Browser | Launch default browser |
 | `Super + B` | Web Browser | Quick launch default browser (`$browser`) |
 | `Super + Shift + B` | Private Browser | Launch browser in private / incognito mode |
@@ -245,10 +247,13 @@ The Tmux setup (`tmux/.tmux.conf`) is designed for extreme productivity, resilie
 ```
 tmux/
 ├── .tmux.conf               # Multi-prefix, top bar, vim keys, TPM plugins
-└── which-key.json           # Interactive popup keymap definition
+├── which-key.json           # Interactive popup keymap definition
+└── bin/
+    └── tmux-launcher        # Smart launcher: auto-attach or prompt for session name
 ```
 
 ### Status Bar & Controls
+- **Smart Launcher (`tmux-launcher`)**: Seamless wrapper script executed from Hyprland (`Super + Alt + Enter`) that auto-attaches to an active session or prompts for a custom name if none exists, preventing unnamed or dangling sessions.
 - **Dual Prefixes**: Primary prefix is `Ctrl + Space`; fallback secondary is `Ctrl + b`.
 - **Top Statusline**: Minimalist Catppuccin Mocha aesthetic displaying current session, indexed windows, active mode indicators (`PREFIX`, `COPY`), and timestamp.
 - **Splits & Vim Navigation**:

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Check whether a tmux server/session already exists.
+if tmux has-session 2>/dev/null; then
+    exec tmux attach-session
+fi
+
+# No tmux session exists, so create one with a user-provided name.
+printf "New tmux session name: "
+read -r session_name
+
+# Don't create an empty/named-less session.
+if [ -z "$session_name" ]; then
+    printf "Session name cannot be empty.\n"
+    exit 1
+fi
+
+exec tmux new-session -s "$session_name"
