@@ -253,15 +253,14 @@ tmux/
 ```
 
 ### Status Bar & Controls
-- **Smart Launcher (`tmux-launcher`)**: Seamless wrapper script executed from Hyprland (`Super + Alt + Enter`) that auto-attaches to an active session or prompts for a custom name if none exists, preventing unnamed or dangling sessions.
+- **Smart Launcher (`tmux-launcher`)**: Seamless wrapper script executed from Hyprland (`Super + Alt + Enter`) that auto-attaches to an active session, auto-restores previous state if saved resurrect sessions exist, or interactively prompts for a custom session name.
 - **Dual Prefixes**: Primary prefix is `Ctrl + Space`; fallback secondary is `Ctrl + b`.
 - **Top Statusline**: Minimalist Catppuccin Mocha aesthetic displaying current session, indexed windows, active mode indicators (`PREFIX`, `COPY`), and timestamp.
 - **Splits & Vim Navigation**:
   - `Prefix + |`: Split horizontally.
   - `Prefix + -`: Split vertically.
   - `h`, `j`, `k`, `l`: Vim-style pane selection.
-- **Fast Window Swapping**:
-  - Custom key sequences (`Ctrl+Tab` and `Ctrl+Shift+Tab`) bound to `next-window` and `previous-window`.
+- **Session Management**:
   - `Prefix + N`: Prompt for named session creation (`new-session -A -s <name>`).
 - **Persistence**: Sessions automatically persist and restore via [`tmux-resurrect`](https://github.com/tmux-plugins/tmux-resurrect) and [`tmux-continuum`](https://github.com/tmux-plugins/tmux-continuum).
 

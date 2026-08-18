@@ -1,18 +1,19 @@
 #!/bin/sh
 
-# Check whether a tmux server/session already exists.
+# Existing tmux server → attach.
 if tmux has-session 2>/dev/null; then
     exec tmux attach-session
 fi
 
-# No tmux session exists, so create one with a user-provided name.
+# Resurrect save exists → let Continuum restore it.
+if ls "$HOME/.local/share/tmux/resurrect/"tmux_resurrect_*.txt >/dev/null 2>&1; then
+    exec tmux new-session
+fi
+
+# No existing server and no saved state → ask for a name.
 printf "New tmux session name: "
 read -r session_name
 
-# Don't create an empty/named-less session.
-if [ -z "$session_name" ]; then
-    printf "Session name cannot be empty.\n"
-    exit 1
-fi
+[ -z "$session_name" ] && exit 1
 
 exec tmux new-session -s "$session_name"
