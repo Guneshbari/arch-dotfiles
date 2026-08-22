@@ -1,3 +1,0 @@
-ani-cli
-nautilus-open-any-terminal
-zen-browser-bin
