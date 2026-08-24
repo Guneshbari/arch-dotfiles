@@ -107,3 +107,7 @@ newnode() {
     pnpm install
     git init
 }
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/gnx/.local/bin:$PATH"

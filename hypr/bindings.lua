@@ -1,6 +1,19 @@
 -- Keep only your personal keybinding overrides here. Add new bindings or
 -- unbind defaults before replacing them.
 
+-- Tmux
+hl.unbind("SUPER + SHIFT + RETURN")
+o.bind("SUPER + SHIFT + RETURN", "Tmux", "ghostty -e tmux")
+
+-- Browser
+o.bind("SUPER + B", "Browser", "zen-browser")
+
+-- Private Browser
+hl.unbind("SUPER + SHIFT + B")
+o.bind("SUPER + SHIFT + B", "Private Browser", "zen-browser --private-window")
+
+-- btop
+o.bind("SUPER + SHIFT + T", "btop", "ghostty -e btop")
 -- See current bindings and descriptions:
 --   omarchy menu keybindings --print
 
