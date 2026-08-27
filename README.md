@@ -26,6 +26,7 @@ The repository intentionally keeps package manifests minimal. Packages are added
 - [Tmux](#-tmux)
 - [Zsh](#-zsh)
 - [Starship](#-starship)
+- [Fastfetch](#-fastfetch)
 - [Packages](#-packages)
 - [Installation](#-installation)
 - [Philosophy](#-philosophy)
@@ -44,6 +45,7 @@ The configuration is intentionally modular:
 | **Tmux** | Terminal multiplexer |
 | **Zsh** | Interactive shell |
 | **Starship** | Shell prompt |
+| **Fastfetch** | System information fetcher with Predator emblem |
 | **lazy.nvim** | Neovim plugin manager |
 | **Catppuccin Mocha** | Visual theme |
 
@@ -57,6 +59,11 @@ Instead, this repository contains the configuration that is worth version contro
 
 ```text
 .
+├── fastfetch/
+│   ├── config.jsonc
+│   ├── predator.txt
+│   └── predator3d.py
+│
 ├── hypr/
 │   ├── autostart.lua
 │   ├── bindings.lua
@@ -273,6 +280,25 @@ The configuration is designed to provide useful information without overwhelming
 
 ---
 
+## 🏎️ Fastfetch
+
+Fastfetch displays system information along with a custom Acer Predator emblem.
+
+```text
+fastfetch/
+├── config.jsonc
+├── predator.txt
+└── predator3d.py
+```
+
+The configuration includes:
+
+* Custom bilateral-symmetric half-block **Predator emblem** in signature cyan accent
+* Structured **Hardware**, **Software**, and **Age / Uptime / Update** modules
+* Integration with Omarchy theme and package version utilities
+
+---
+
 ## 📦 Packages
 
 Package manifests are intentionally minimal.
@@ -316,6 +342,12 @@ Do not add packages simply because they happen to be installed as dependencies o
 ## 🔗 Configuration Symlinks
 
 The repository is designed to be linked into the standard configuration locations.
+
+### Fastfetch
+
+```bash
+ln -sfn ~/dotfiles/fastfetch ~/.config/fastfetch
+```
 
 ### Hyprland
 
@@ -371,6 +403,7 @@ mkdir -p ~/.config
 ### 3. Create Symlinks
 
 ```bash
+ln -sfn ~/dotfiles/fastfetch ~/.config/fastfetch
 ln -sfn ~/dotfiles/hypr ~/.config/hypr
 ln -sfn ~/dotfiles/nvim ~/.config/nvim
 ln -sfn ~/dotfiles/starship/starship.toml ~/.config/starship.toml
@@ -404,6 +437,7 @@ nvim
 After linking the configuration, verify the important paths:
 
 ```bash
+ls -ld ~/.config/fastfetch
 ls -ld ~/.config/hypr
 ls -ld ~/.config/nvim
 ls -l ~/.config/starship.toml
