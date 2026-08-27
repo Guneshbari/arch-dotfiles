@@ -5,6 +5,8 @@
 .cache/
 .local/share/nvim/
 .local/share/Trash/
+__pycache__/
+*.pyc
 
 # Node
 node_modules/
