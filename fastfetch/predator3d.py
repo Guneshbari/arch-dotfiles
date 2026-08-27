@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
 Predator 3D Rotating Emblem for Fastfetch
-Smoothly rotates a compact, perfectly proportioned 3D Acer Predator emblem with
-lighting, perspective, and depth alongside the Omarchy system information modules.
-Zero clipping at all 360-degree rotation angles.
+Smoothly rotates a 3D Acer Predator emblem with dynamic lighting, perspective,
+and depth alongside Omarchy system information modules.
+When any key is pressed to stop the rotation, it smoothly presents the full
+front-facing logo and hands the terminal back to the user prompt.
 """
 
 import os
@@ -32,12 +33,12 @@ def decode_mesh():
 
 POINTS = decode_mesh()
 
-# Fully Centered, Non-Clipping Proportional Constants
+# Scaled Proportional Constants (Prominent, Non-Clipping)
 RAMP = " .:-=+*#%@"
-LOGO_W = 32
-LOGO_H = 22
-X_SCALE = 1.05
-Y_SCALE = 0.95
+LOGO_W = 38
+LOGO_H = 26
+X_SCALE = 1.10
+Y_SCALE = 0.96
 PERSPECTIVE = 0.15
 SPEED = 1.8
 FPS = 30
@@ -114,15 +115,14 @@ def composite_frame(logo_lines, info_lines, term_w):
     combined = []
     
     padding_left = "  "
-    padding_between = "    "
-    if term_w < 96:
+    padding_between = "   "
+    if term_w < 98:
         padding_left = " "
         padding_between = "  "
     
     for i in range(num_lines):
         logo_part = logo_lines[i] if i < len(logo_lines) else (" " * LOGO_W)
         info_part = info_lines[i] if i < len(info_lines) else ""
-        # Reset color and clear to end of line to prevent artifact bleeding
         combined.append(f"{padding_left}{logo_part}{C_RESET}{padding_between}{info_part}\033[K")
         
     return "\n".join(combined)
@@ -149,6 +149,7 @@ def main():
         os.execv("/usr/bin/fastfetch", ["fastfetch"])
 
     info_lines = get_system_info()
+    total_render_lines = max(LOGO_H, len(info_lines))
     
     old_settings = None
     try:
@@ -159,7 +160,19 @@ def main():
     except Exception:
         pass
 
+    def render_final_view():
+        term_w, _ = shutil.get_terminal_size((100, 30))
+        final_logo_lines = render_logo(0.0)
+        final_frame = composite_frame(final_logo_lines, info_lines, term_w)
+        sys.stdout.write(f"\033[{total_render_lines}A\r")
+        sys.stdout.write(final_frame + "\n")
+        sys.stdout.flush()
+
     def handle_sigint(sig, frame):
+        try:
+            render_final_view()
+        except Exception:
+            pass
         restore_terminal(old_settings)
         sys.exit(0)
 
@@ -173,12 +186,15 @@ def main():
     last_frame_str = ""
 
     try:
-        total_render_lines = max(LOGO_H, len(info_lines))
-        
         while True:
+            # Check for user key press to exit
             r, _, _ = select.select([sys.stdin], [], [], 0)
             if r:
-                sys.stdin.read(1)
+                # Consume keypress
+                try:
+                    sys.stdin.read(1)
+                except Exception:
+                    pass
                 break
 
             term_w, term_h = shutil.get_terminal_size((100, 30))
@@ -197,8 +213,13 @@ def main():
             
             time.sleep(1.0 / FPS)
 
+        # On user key press, render the full clean front-facing logo
+        if last_frame_str:
+            render_final_view()
+
     except KeyboardInterrupt:
-        pass
+        if last_frame_str:
+            render_final_view()
     finally:
         restore_terminal(old_settings)
         print()
