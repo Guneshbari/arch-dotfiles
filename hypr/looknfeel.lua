@@ -50,3 +50,6 @@ hl.config({
         column_width = 0.5,
     },
 })
+
+-- Sizing for the About fastfetch window
+o.window("org.omarchy.about", { size = { 1080, 640 } })
