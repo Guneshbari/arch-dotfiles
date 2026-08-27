@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
 Predator 3D Rotating Emblem for Fastfetch
-Smoothly rotates a compact, proportional 3D Acer Predator emblem with lighting,
-perspective, and depth alongside the Omarchy system information modules.
+Smoothly rotates a compact, perfectly proportioned 3D Acer Predator emblem with
+lighting, perspective, and depth alongside the Omarchy system information modules.
+Zero clipping at all 360-degree rotation angles.
 """
 
 import os
@@ -31,13 +32,13 @@ def decode_mesh():
 
 POINTS = decode_mesh()
 
-# Proportional Compact Rendering Constants
+# Fully Centered, Non-Clipping Proportional Constants
 RAMP = " .:-=+*#%@"
-LOGO_W = 34
-LOGO_H = 24
-X_SCALE = 1.90
-Y_SCALE = 1.02
-PERSPECTIVE = 0.20
+LOGO_W = 32
+LOGO_H = 22
+X_SCALE = 1.05
+Y_SCALE = 0.95
+PERSPECTIVE = 0.15
 SPEED = 1.8
 FPS = 30
 
@@ -64,7 +65,7 @@ def render_logo(angle):
     ca = math.cos(angle)
     sa = math.sin(angle)
     
-    # Directional light from front-top-right
+    # Directional light source from front-top-right
     lx, ly, lz = 0.4, -0.3, 0.8
     l_len = math.sqrt(lx * lx + ly * ly + lz * lz)
     lx, ly, lz = lx / l_len, ly / l_len, lz / l_len
@@ -114,14 +115,14 @@ def composite_frame(logo_lines, info_lines, term_w):
     
     padding_left = "  "
     padding_between = "    "
-    if term_w < 98:
+    if term_w < 96:
         padding_left = " "
         padding_between = "  "
     
     for i in range(num_lines):
         logo_part = logo_lines[i] if i < len(logo_lines) else (" " * LOGO_W)
         info_part = info_lines[i] if i < len(info_lines) else ""
-        # C_RESET before padding_between prevents color code bleed; [K erases to end of line to prevent ghosting/shadow artifacts
+        # Reset color and clear to end of line to prevent artifact bleeding
         combined.append(f"{padding_left}{logo_part}{C_RESET}{padding_between}{info_part}\033[K")
         
     return "\n".join(combined)
@@ -165,7 +166,6 @@ def main():
     signal.signal(signal.SIGINT, handle_sigint)
     signal.signal(signal.SIGTERM, handle_sigint)
 
-    # Hide cursor
     sys.stdout.write("\033[?25l")
     sys.stdout.flush()
 
@@ -176,7 +176,6 @@ def main():
         total_render_lines = max(LOGO_H, len(info_lines))
         
         while True:
-            # Non-blocking key check to exit on keypress
             r, _, _ = select.select([sys.stdin], [], [], 0)
             if r:
                 sys.stdin.read(1)
