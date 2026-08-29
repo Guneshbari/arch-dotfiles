@@ -51,5 +51,13 @@ hl.config({
     },
 })
 
+-- Ensure all floating windows and TUIs (btop, etc.) meet minimum terminal size constraints (>= 80x24)
+o.window("(org.omarchy.btop|org.omarchy.terminal|TUI.float)", {
+    tag = "-floating-window",
+    float = true,
+    center = true,
+    size = { 1000, 680 },
+})
+
 -- Sizing for the About fastfetch window
 o.window("org.omarchy.about", { size = { 1080, 640 } })
