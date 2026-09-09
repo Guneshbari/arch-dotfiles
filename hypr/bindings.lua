@@ -2,8 +2,9 @@
 -- unbind defaults before replacing them.
 
 -- Tmux
+hl.unbind("SUPER + ALT + RETURN")
+o.bind("SUPER + ALT + RETURN", "Tmux", "ghostty -e tmux")
 hl.unbind("SUPER + SHIFT + RETURN")
-o.bind("SUPER + SHIFT + RETURN", "Tmux", "ghostty -e tmux")
 
 -- Browser
 o.bind("SUPER + B", "Browser", "zen-browser")
