@@ -12,6 +12,7 @@ return {
 	    "ts_ls",
 	    "pyright",
 	    "clangd",
+	    "jsonls",
         },
     })
 
@@ -33,6 +34,7 @@ return {
     vim.lsp.enable("ts_ls")
     vim.lsp.enable("pyright")
     vim.lsp.enable("clangd")
+    vim.lsp.enable("jsonls")
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Definition" })

@@ -11,7 +11,9 @@ return {
             typescript = { "prettier" },
             typescriptreact = { "prettier" },
 
-            json = { "prettier" },
+            -- Tries prettier first; if missing, falls back to jq (system binary)
+            json = { "prettier", "jq", stop_after_first = true },
+            jsonc = { "prettier", "jq", stop_after_first = true },
             html = { "prettier" },
             css = { "prettier" },
 
@@ -23,14 +25,14 @@ return {
 
         format_on_save = {
             timeout_ms = 500,
-            lsp_fallback = true,
+            lsp_format = "fallback", -- Updated from lsp_fallback
         },
     },
     config = function(_, opts)
         require("conform").setup(opts)
         vim.keymap.set("n", "<leader>f", function()
             require("conform").format({
-                lsp_fallback = true,
+                lsp_format = "fallback", -- Updated from lsp_fallback
                 async = false,
                 timeout_ms = 500,
             })
