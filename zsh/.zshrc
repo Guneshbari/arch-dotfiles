@@ -40,3 +40,9 @@ newnode() {
     pnpm install
     git init
 }
+
+. "$HOME/.local/share/../bin/env"
+
+# Local personal overrides & secrets
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+
