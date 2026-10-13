@@ -1,9 +1,9 @@
 -- Keep only your personal keybinding overrides here. Add new bindings or
 -- unbind defaults before replacing them.
 
--- Tmux
+-- Herdr
 hl.unbind("SUPER + ALT + RETURN")
-o.bind("SUPER + ALT + RETURN", "Tmux", "ghostty -e tmux")
+o.bind("SUPER + ALT + RETURN", "Herdr", { omarchy = "terminal-herdr" })
 hl.unbind("SUPER + SHIFT + RETURN")
 
 -- Browser
@@ -15,6 +15,11 @@ o.bind("SUPER + SHIFT + B", "Private Browser", "zen-browser --private-window")
 
 -- btop
 o.bind("SUPER + SHIFT + T", "btop", { tui = "btop" })
+
+-- Network Manager (community.network)
+hl.unbind("SUPER + CTRL + W")
+o.bind("SUPER + CTRL + W", "Network", "omarchy-shell shell toggle community.network")
+
 -- See current bindings and descriptions:
 --   omarchy menu keybindings --print
 
