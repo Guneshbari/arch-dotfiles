@@ -10,8 +10,14 @@ hl.unbind("SUPER + SHIFT + RETURN")
 o.bind("SUPER + B", "Browser", "zen-browser")
 
 -- Private Browser
+
+-- Browser (NVIDIA RTX 4050)
+hl.unbind("SUPER + B")
+o.bind("SUPER + B", "Browser (NVIDIA)", "prime-run /usr/bin/zen-browser")
+
+-- Private Browser (NVIDIA RTX 4050)
 hl.unbind("SUPER + SHIFT + B")
-o.bind("SUPER + SHIFT + B", "Private Browser", "zen-browser --private-window")
+o.bind("SUPER + SHIFT + B", "Private Browser (NVIDIA)", "prime-run /usr/bin/zen-browser --private-window")
 
 -- btop
 o.bind("SUPER + SHIFT + T", "btop", { tui = "btop" })
