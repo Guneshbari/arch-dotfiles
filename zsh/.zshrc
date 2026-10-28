@@ -46,3 +46,6 @@ newnode() {
 # Local personal overrides & secrets
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
+
+# >>> Codex installer >>>
+export PATH="/home/gnx/.local/bin:$PATH"
